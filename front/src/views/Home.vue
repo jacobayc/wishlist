@@ -8,7 +8,7 @@
         <h1 class="title">안유엘님의 위시리스트</h1>
       </div>
     </div>
-    <Item 
+    <Item
       v-for="(item, index) in items"
       :key="index"
       :imageUrl="item.imageUrl"
@@ -63,6 +63,7 @@ onMounted(() => {
 .container {
   max-width: 345px;
   margin: 0 auto;
+  padding-bottom: 50px;
   /* padding: 20px; */
   box-sizing: border-box;
 }
@@ -78,6 +79,7 @@ onMounted(() => {
 }
 
 .profile-image {
+  margin-top: 30px;
   width: auto;
   height: 130px;
   border-radius: 50%;
