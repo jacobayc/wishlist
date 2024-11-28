@@ -3,9 +3,9 @@
     <div class="wishlist-header">
       <div class="profile">
         <div class="profile-image">
-          <!-- <img src="" alt="프로필"> -->
+          <img src="../assets/profile.png" alt="프로필">
         </div>
-        <!-- <h1 class="title">안유엘님의 위시리스트</h1> -->
+        <h1 class="title">안유엘님의 위시리스트</h1>
       </div>
     </div>
     <Item 
@@ -78,11 +78,18 @@ onMounted(() => {
 }
 
 .profile-image {
-  width: 40px;
-  height: 40px;
+  width: auto;
+  height: 130px;
   border-radius: 50%;
   overflow: hidden;
+  margin-right: 20px;
 }
+
+.profile-image img {
+  /* width: 100px; */
+  height: 100%;
+}
+
 
 .title {
   font-size: 18px;

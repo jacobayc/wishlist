@@ -10,8 +10,8 @@
 
 <style>
 #app {
-   padding-top: 30px;
    height: 100vh;
+   padding-top: 20px;
    color: #eaeaea;
    background: #222;
 }
