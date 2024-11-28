@@ -1,0 +1,7 @@
+[[redirects]]
+  from = "/proxy/*"
+  to = "https://3874-121-162-171-98.ngrok-free.app/:splat"
+  status = 200
+  force = true
+
+  
