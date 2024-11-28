@@ -11,7 +11,7 @@
 <style>
 #app {
    height: 100vh;
-   padding-top: 20px;
+   padding: 20px auto 40px;
    color: #eaeaea;
    background: #222;
 }
