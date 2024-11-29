@@ -12,12 +12,12 @@
             찜하기
           </div>
           <div v-else class="wished-container">
-              <div class="wished-by"><span>{{ item.name }}</span>님이 찜함</div>
-              <button class="cancel-wish-button" @click="cancelWish">찜 취소</button>
+              <div class="wished-by"><span>{{ item.name }}</span>님이 찜!</div>
+              <button class="cancel-wish-button" @click="cancelWish">찜 취소하기</button>
           </div>
         </div>
         <p class="description">
-          [구매링크]<br/>
+          [추천 구매링크]<br/>
           <a :href="item.link">{{ item.link }}</a>
         </p>
       </div>
@@ -39,7 +39,7 @@
       </div>
     </div>
     <div class="exit-button-container">
-      <button class="exit-button" @click="goToHome">나가기</button>
+      <button class="exit-button" @click="goToHome">뒤로가기</button>
     </div>
   </div>
 </template>
@@ -47,6 +47,7 @@
 <script setup lang="ts">
 import { ref, onMounted, nextTick  } from 'vue'
 import { useRoute, useRouter  } from 'vue-router'
+import { PROXY } from '../../config';
 
 const showContent = ref(false)
 const route = useRoute()
@@ -80,7 +81,7 @@ const saveName = async () => {
   if (!inputName.value) return
   
   try {
-    const PROXY = window.location.hostname === 'localhost' ? 'http://localhost:3000' : '/proxy';
+    // const PROXY = window.location.hostname === 'localhost' ? 'http://localhost:3000' : '/proxy';
     const response = await fetch(`${PROXY}/api/items/${route.params.id}/name`, {
       method: 'PUT',
       headers: {
@@ -101,8 +102,14 @@ const saveName = async () => {
 }
 
 const cancelWish = async () => {
+  const userConfirmed = confirm("정말 취소하시겠습니까?\n기존에 찜한 내용이 삭제됩니다.");
+
+  if (!userConfirmed) {
+    return;
+  }
+
   try {
-    const PROXY = window.location.hostname === 'localhost' ? 'http://localhost:3000' : '/proxy';
+    // const PROXY = window.location.hostname === 'localhost' ? 'http://localhost:3000' : '/proxy';
     const response = await fetch(`${PROXY}/api/items/${route.params.id}/name`, {
       method: 'PUT',
       headers: {
@@ -122,7 +129,7 @@ const cancelWish = async () => {
 
 const fetchItem = async () => {
   try {
-    const PROXY = window.location.hostname === 'localhost' ? 'http://localhost:3000' : '/proxy';
+    // const PROXY = window.location.hostname === 'localhost' ? 'http://localhost:3000' : '/proxy';
     const response = await fetch(`${PROXY}/api/items/${route.params.id}`, {
       headers: {
         'Content-Type': 'application/json',
@@ -151,10 +158,12 @@ onMounted(() => {
 <style scoped>
 
 .detail-container {
-  max-width: 345px;
-  width: 100%;
+  background: #2c2c2c;
+  border-radius: 10px;
+  min-width: 345px;
+  width: 90%;
   margin: 0 auto;
-  padding: 16px;
+  padding: 20px;
   box-sizing: border-box;
   opacity: 0;
   transform: translateY(100px);
@@ -169,10 +178,11 @@ onMounted(() => {
 .detail-image {
   width: 100%;
   aspect-ratio: 1;
+  border-radius: 10px;
   overflow: hidden;
   opacity: 0;
   transform: rotateY(90deg);
-  animation: pageFlip 1s ease-out forwards;
+  animation: pageFlip .5s ease-out forwards;
 }
 @keyframes pageFlip {
   0% {
@@ -198,11 +208,12 @@ onMounted(() => {
 .detail-title {
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 16px;
   line-height: 1.4;
+  animation: pageFlip 1s ease-out forwards;
 }
 
 .detail-info {
+  animation: pageFlip 1.5s ease-out forwards;
   padding: 16px;
   border-radius: 8px;
   background: #f8f8f8;
@@ -230,7 +241,10 @@ onMounted(() => {
 }
 
 .cancel-wish-button {
-  padding: 4px 8px;
+  padding: 6px 8px;
+  position: absolute;
+  top: 30px;
+  right: 0;
   background-color: transparent;
   border: 1px solid #666;
   border-radius: 4px;
@@ -239,12 +253,22 @@ onMounted(() => {
   cursor: pointer;
 }
 
+.wished-container {
+  position: relative;
+}
+
 .wished-by {
   color: #997aff;
 }
 .wished-by span {
+  transform: translateY(5px);
+  display: inline-block;
   font-weight: bold;
   color: #007aff;
+  max-width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .description {
@@ -255,9 +279,9 @@ onMounted(() => {
 }
 
 .description a {
-  word-break: break-all;  /* 링크 텍스트 줄바꿈 */
-  display: inline-block;  /* 링크를 블록 요소처럼 처리 */
-  width: 100%;  /* 부모 너비 전체 사용 */
+  word-break: break-all; 
+  display: inline-block; 
+  width: 100%; 
 }
 
 .modal {
@@ -288,6 +312,7 @@ onMounted(() => {
   padding: 8px;
   margin-bottom: 16px;
   border: 1px solid #aaa;
+  color: #fff;
   background: #333;
   border-radius: 4px;
 }
@@ -316,5 +341,13 @@ onMounted(() => {
 
 .modal-buttons button:last-child {
   background-color: #aaa;
+}
+
+.exit-button-container {
+  text-align: right;
+}
+
+.exit-button {
+  padding: 8px 10px;
 }
 </style>

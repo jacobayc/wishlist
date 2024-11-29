@@ -11,6 +11,7 @@
 <style>
 #app {
    padding-top: 20px;
+   /* min-height: 100vh; */
    color: #eaeaea;
    background: #222;
 }
