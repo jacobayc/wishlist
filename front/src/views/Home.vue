@@ -3,6 +3,7 @@
     <div class="wishlist-header">
       <div class="profile">
         <div class="profile-image" @click="toggleScale" :style="{ transform: `scale(${scale})` }">
+          <img src="../assets/og.png" alt="프로필" style="display:none;"> 
           <img src="../assets/profile.png" alt="프로필">
         </div>
         <h1 class="title"><strong>안유엘</strong>님의 위시리스트</h1>
