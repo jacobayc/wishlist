@@ -9,7 +9,7 @@ console.log('port::', port)
 
 app.use(cors({
   origin: [
-    'https://3874-121-162-171-98.ngrok-free.app',
+    'https://9fa1-211-44-196-81.ngrok-free.app',
     'http://localhost:5173',
      'http://localhost:3000'
   ],
