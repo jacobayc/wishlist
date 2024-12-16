@@ -1,6 +1,6 @@
 [[redirects]]
   from = "/proxy/*"
-  to = "https://9fa1-211-44-196-81.ngrok-free.app/:splat"
+  to = "https://d1ed-211-118-142-83.ngrok-free.app/:splat"
   status = 200
   force = true
 

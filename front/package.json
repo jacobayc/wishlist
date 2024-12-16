@@ -8,7 +8,7 @@
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview"
   },
-  "proxy": "https://9fa1-211-44-196-81.ngrok-free.app/",
+  "proxy": "https://d1ed-211-118-142-83.ngrok-free.app/",
   "dependencies": {
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
