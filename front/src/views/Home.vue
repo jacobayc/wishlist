@@ -1,6 +1,10 @@
 <template>
     <div class="container">
     <div class="wishlist-header">
+      <div class="header">
+        <p> <a href="https://card-ul.netlify.app/">HOME</a></p>
+        <p><a href="#" onclick="location.reload(); return false;">Wish List</a></p>
+      </div>
       <div class="profile">
         <div class="profile-image" @click="toggleScale" :style="{ transform: `scale(${scale})` }">
           <img src="../assets/og.png" alt="프로필" style="display:none;"> 
@@ -78,6 +82,29 @@ onMounted(() => {
 
 .wishlist-header {
   margin-bottom: 20px;
+}
+
+.header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display:flex; 
+  width: 100%; 
+  height: 60px;
+  box-shadow: 2px 2px 5px rgba(255,255,255,.2);
+  /* position: fixed; */
+  background: rgba(100,100,100,.1); 
+  justify-content: right;
+}
+
+.header p {
+  line-height: 30px;
+  padding: 0px 15px;
+}
+
+.header p a {
+  text-decoration: none;
+  color: #fff;
 }
 
 .profile {
